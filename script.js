@@ -47,7 +47,7 @@ const LIBRO = {
         pie: 'Propiedad del Departamento de Policía de Raccoon City',
         insignia: null            // null = usa LIBRO.escudo; o pon otra ruta solo para esta página
       },
-      dorso: { tipo: 'guarda', manchas: 'sangre' }
+      dorso: { tipo: 'guarda', manchas: 'null' }
     },
 
     /* ── Hoja 2: registro de archivo + título del Preámbulo ──────── */
@@ -67,7 +67,7 @@ const LIBRO = {
           ['Estado', 'CERRADO']
         ],
         sello: 'CLASSIFIED',
-        manchas: 'suave'
+        manchas: 'null'
       },
       dorso: {
         tipo: 'titulo',
@@ -137,7 +137,7 @@ const LIBRO = {
 
     /* ── Hoja final: guarda trasera + contraportada ──────────────── */
     {
-      frente: { tipo: 'guarda', manchas: 'suave' },
+      frente: { tipo: 'guarda', manchas: 'null' },
       dorso: { tipo: 'contraportada', texto: 'Raccoon City · 1969' }
     }
   ]
@@ -173,30 +173,6 @@ const LIBRO = {
 
   /* ---------- escudo (imagen editable) ---------- */
   const emblema = src => `<img class="insignia" src="${esc(src || LIBRO.escudo)}" alt="Escudo R.P.D." onerror="this.classList.add('vacio')">`;
-
-  /* ---------- manchas de sangre / café ---------- */
-  const g = (x, y, d, extra = '') => `<span class="gota ${extra}" style="--x:${x}%;--y:${y}%;--d:${d}%"></span>`;
-  const manchas = tipo => {
-    if (tipo === 'sangre') {
-      return `<div class="mancha-gr"></div>
-        <span class="aro" style="--x:8%;--y:68%;--s:22%"></span>
-        <span class="aro mancha" style="--x:10%;--y:72%;--s:16%"></span>
-        <span class="aro" style="--x:-8%;--y:4%;--s:30%"></span>
-        ${g(36,33,4)}${g(41,36,2.2)}${g(52,35,3)}${g(60,37,1.6)}${g(70,36,1.2)}
-        ${g(18,52,3.8)}${g(46,55,1.4)}${g(33,62,2.4)}${g(64,62,1.8)}${g(78,48,1.4)}
-        ${g(22,41,1.2)}${g(85,54,1.3)}${g(55,73,1.5)}${g(12,86,2.2)}${g(92,22,1.2)}`
-        + `<span class="gota el" style="--x:55%;--y:43%;--d:12%;--r:-4deg"></span>`
-        + `<span class="gota el" style="--x:64%;--y:41%;--d:8%;--r:2deg"></span>`;
-    }
-    if (tipo === 'suave') {
-      return `<span class="aro" style="--x:-6%;--y:84%;--s:26%"></span>
-        <span class="aro mancha" style="--x:6%;--y:88%;--s:14%"></span>
-        ${g(95,64,1.4)}${g(93,72,1.1)}${g(96,80,1.8)}${g(90,93,1.2)}`;
-    }
-    return '';
-  };
-
-  const sello = txt => txt === false ? '' : `<div class="sello">${esc(txt || 'CLASSIFIED')}</div>`;
 
   /* ---------- contenido de las páginas de texto ---------- */
   const figura = it => `<figure class="foto" style="--rows:${+it.filas || 8}">
