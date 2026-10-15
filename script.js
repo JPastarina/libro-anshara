@@ -304,8 +304,10 @@ const LIBRO = {
     corners.style.setProperty('--vw', (v === 'both' ? pw * 2 : pw) + 'px');
     const enPortada = f === 0 && v === 'r';
     const enTrasera = trasero && f === N && v === 'l';
-    btnN.classList.toggle('on', canNext() && !enPortada && !enTrasera && (single ? side === 'l' || side === 'r' : true));
-    btnP.classList.toggle('on', canPrev() && !enPortada && !enTrasera);
+    const sinPrev = f === 1 && (!single || side === 'l');                    // la izquierda es el interior de la tapa
+    const sinNext = trasero && f === N - 1 && (!single || side === 'r');      // lo siguiente es la contraportada
+    btnN.classList.toggle('on', canNext() && !enPortada && !enTrasera && !sinNext);
+    btnP.classList.toggle('on', canPrev() && !enPortada && !enTrasera && !sinPrev);
     hint.textContent = enPortada
       ? 'Pulsa la portada para abrir el informe'
       : enTrasera ? 'Pulsa la contraportada para volver atrás'
@@ -369,10 +371,18 @@ const LIBRO = {
   /* ---------- eventos ---------- */
   btnN.addEventListener('click', e => { e.stopPropagation(); next(); });
   btnP.addEventListener('click', e => { e.stopPropagation(); prev(); });
-  wrap.addEventListener('click', () => {
+  const caraIni = leaves[0].querySelector('.face.back');            // interior de la tapa (izquierda)
+  const caraFin = leaves[N - 1].querySelector('.face.front');       // última guarda (derecha)
+  [leaves[0].querySelector('.face.front'), caraIni, caraFin].forEach(x => x.classList.add('clic'));
+  if (trasero) leaves[N - 1].querySelector('.face.back').classList.add('clic');
+
+  wrap.addEventListener('click', e => {
     const v = view();
-    if (f === 0 && v === 'r') next();                 // abrir la portada
-    else if (trasero && f === N && v === 'l') prev(); // volver desde la contraportada
+    if (f === 0 && v === 'r') return next();                        // abrir la portada
+    if (trasero && f === N && v === 'l') return prev();             // volver desde la contraportada
+    const cara = e.target.closest && e.target.closest('.face');
+    if (cara === caraIni && f === 1 && (!single || side === 'l')) prev();                       // cerrar el libro
+    else if (trasero && cara === caraFin && f === N - 1 && (!single || side === 'r')) next();   // ir a la contraportada
   });
   addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'PageDown') next();
