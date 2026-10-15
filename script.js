@@ -93,7 +93,8 @@ const LIBRO = {
         contenido: [
           'El sujeto !!Ziusudra Anshara!!, hija de ##Ziusudra ZJSHS## y #Ziusudra ASDHJ## presenta un estado psicofísico óptimo durante su infancia y niñez.',
           'El agente instructor Noir ha obtenido la custodia de Anshara en el año 1528 del Kaienreki, cuando el sujeto tenía 3 años.',
-          'Z. Anshara demuestra capacidades sociales altas gracias a Noir. A sus 8 años logró crear un nuevo sistema de apuestas de comida entre sus compañeros del colegio, en el que cada uno apostaba parte del dinero que traían para comprar la comida del comedor para entrar en un torneo y ganar más comida aún. El colegio 2 años en darse cuenta de que esto estaba ocurriendo, y para entonces Anshara ya había ganado dinero con su iniciativa'
+          'Z. Anshara demuestra capacidades sociales altas gracias a Noir. A sus 8 años logró crear un nuevo sistema de apuestas de comida entre sus compañeros del colegio, y no fue descubierta hasta los 10 años por el propio colegio.',
+          'Hace tratos con varios de sus compañeros, tanto con juguetes como con comida. Vuelve a vender aquello que ha comprado o cambiado por algo de mayor valor, tiene potencial como comerciante.',
           { espacio: 1 },
           { titulo: '[SECCIÓN ELIMINADA]' },
           '##texto totalmente censurado por la autoridad competente##'
