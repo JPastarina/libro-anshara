@@ -52,8 +52,9 @@ body{
   border-radius:0 .15em .15em 0;
 }
 .face.back{transform:rotateY(180deg);border-radius:.15em 0 0 .15em}
-.leaf.hard .face.front{border-radius:0 .45em .45em 0}
-.leaf.hard .face.back{border-radius:.45em 0 0 .45em}
+/* tapas duras: esquinas rectas y un poco más grandes que las páginas, para que no asome nada por detrás */
+.leaf.hard .face.front{border-radius:0;inset:-.4em -.4em -.4em 0}
+.leaf.hard .face.back{border-radius:0;inset:-.4em 0 -.4em -.4em}
 
 /* sombra del lomo y sombreado durante el giro */
 .face::before{content:"";position:absolute;top:0;bottom:0;width:13%;pointer-events:none;z-index:5}
@@ -110,6 +111,11 @@ body{
 .r-reg{position:absolute;left:11%;right:5%;bottom:10%;font-size:1em;line-height:1.5}
 .r-tit{font-weight:700;text-transform:uppercase;margin-bottom:1.5em;letter-spacing:.01em}
 .r-reg b{font-weight:800}
+
+/* manchas */
+.aro{position:absolute;width:var(--s);aspect-ratio:1;border-radius:50%;left:var(--x);top:var(--y);
+  border:.2em solid rgba(112,46,52,.42);box-shadow:inset 0 0 .7em rgba(112,46,52,.28)}
+.aro.mancha{background:radial-gradient(circle,rgba(112,46,52,.55),rgba(112,46,52,.32) 70%,transparent 72%);border:0;box-shadow:none}
 
 /* ---------- PAPEL RAYADO (documentos) ---------- */
 .f-paper{
