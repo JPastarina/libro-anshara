@@ -47,7 +47,7 @@ const LIBRO = {
         pie: 'Propiedad del Departamento de Policía de Raccoon City',
         insignia: null            // null = usa LIBRO.escudo; o pon otra ruta solo para esta página
       },
-      dorso: { tipo: 'guarda', manchas: 'null' }
+      dorso: { tipo: 'guarda' }
     },
 
     /* ── Hoja 2: registro de archivo + título del Preámbulo ──────── */
@@ -66,8 +66,7 @@ const LIBRO = {
           ['Recuperado por', 'A. C. Peterson (periodista)'],
           ['Estado', 'CERRADO']
         ],
-        sello: 'CLASSIFIED',
-        manchas: 'null'
+        sello: 'CLASSIFIED'
       },
       dorso: {
         tipo: 'titulo',
@@ -137,7 +136,7 @@ const LIBRO = {
 
     /* ── Hoja final: guarda trasera + contraportada ──────────────── */
     {
-      frente: { tipo: 'guarda', manchas: 'null' },
+      frente: { tipo: 'guarda' },
       dorso: { tipo: 'contraportada', texto: 'Raccoon City · 1969' }
     }
   ]
@@ -174,6 +173,9 @@ const LIBRO = {
   /* ---------- escudo (imagen editable) ---------- */
   const emblema = src => `<img class="insignia" src="${esc(src || LIBRO.escudo)}" alt="Escudo R.P.D." onerror="this.classList.add('vacio')">`;
 
+  /* ---------- sello ---------- */
+  const sello = txt => txt === false ? '' : `<div class="sello">${esc(txt || 'CLASSIFIED')}</div>`;
+
   /* ---------- contenido de las páginas de texto ---------- */
   const figura = it => `<figure class="foto" style="--rows:${+it.filas || 8}">
       <div class="marco" style="--ancho:${esc(it.ancho || '70%')};--rot:${esc(it.rot || '-1.2deg')}">
@@ -206,7 +208,7 @@ const LIBRO = {
 
     contraportada: p => ['f-cover trasera', `${emblema(p.insignia)}<div class="c-sub foil" style="margin:0">${marcas(p.texto || '')}</div>`],
 
-    guarda: p => ['f-kraft', manchas(p.manchas)],
+    guarda: () => ['f-kraft', ''],
 
     registro: p => ['f-kraft', `
       <div class="r-caso">${marcas(p.caso)}</div>
@@ -218,7 +220,7 @@ const LIBRO = {
         <div class="r-tit">${marcas(p.titulo)}</div>
         ${(p.campos || []).map(([k, v]) => `<div><b>${marcas(k)}</b>: ${marcas(v)}</div>`).join('')}
       </div>
-      ${sello(p.sello)}${manchas(p.manchas)}`],
+      ${sello(p.sello)}`],
 
     titulo: p => ['f-paper', `
       <div class="hdr">${(p.cabecera || []).map(marcas).join('<br>')}</div>
