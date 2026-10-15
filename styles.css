@@ -52,10 +52,13 @@ body{
   border-radius:0 .15em .15em 0;
 }
 .face.back{transform:rotateY(180deg);border-radius:.15em 0 0 .15em}
-/* tapas duras: un poco más grandes que las páginas (igual por ambos lados) y en el color de la tapa.
-   Se define en coordenadas de la hoja: las dos caras sobresalen por arriba, abajo y el lado exterior */
-.leaf.hard .face.front,.leaf.hard .face.back{border-radius:0;inset:-.4em -.4em -.4em -.2em}
-.leaf.hard .face.f-kraft{border:solid var(--cover);border-width:.4em .4em .4em .2em}
+/* tapas duras: sobresalen igual por arriba, abajo y el lado exterior, en el color de la tapa.
+   Por el lado del lomo no sobresalen (salvo la portada, que tapa la rendija del lomo) */
+.leaf.hard .face{border-radius:0;inset:-.4em -.4em -.4em 0}
+.leaf.hard .face.front.f-cover{inset:-.4em -.4em -.4em -.2em}
+.leaf.hard .face.front.f-kraft{border:solid var(--cover);border-width:.4em .4em .4em 0}
+.leaf.hard .face.back.f-kraft{border:solid var(--cover);border-width:.4em 0 .4em .4em}
+.face.clic{cursor:pointer}
 
 /* sombra del lomo y sombreado durante el giro */
 .face::before{content:"";position:absolute;top:0;bottom:0;width:13%;pointer-events:none;z-index:5}
