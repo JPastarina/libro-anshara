@@ -22,17 +22,18 @@
      "un párrafo"                         → párrafo normal
      { titulo: "Línea en rojo" }          → línea suelta en rojo
      { espacio: 2 }                       → deja 2 líneas en blanco
-     { img: "img/foto.jpg", filas: 8,     → foto pegada (8 líneas de alto)
+     { img: "foto.jpg", filas: 8,     → foto pegada (8 líneas de alto)
        ancho: "70%", pie: "Pie de foto" }
 
-   Imágenes: súbelas a una carpeta "img" junto al index.html.
+   Imágenes: súbelas al repositorio, al mismo nivel que index.html (no hace falta ninguna carpeta).
+   Luego escribe su nombre tal cual, por ejemplo: "foto1.jpg".
    Una página aguanta unas 26 líneas (~ 1.300 caracteres): si te pasas,
    pasa el resto a la página siguiente.
    ===================================================================== */
 
 const LIBRO = {
   caso: 'RC-09-29-98',
-  escudo: 'escudo.png',       // ← ruta de la imagen del escudo (portada, registro y contraportada)
+  escudo: 'escudo-portada.png',   // imagen por defecto para las páginas que no indican otra
 
   hojas: [
     /* ── Hoja 1: portada + interior de la tapa ───────────────────── */
@@ -45,7 +46,7 @@ const LIBRO = {
         subtitulo: 'Raccoon City - Septiembre de 1998',
         placa: 'A.C. Peterson · CASO Nº: RC-09-29-98',
         pie: 'Propiedad del Departamento de Policía de Raccoon City',
-        insignia: null            // null = usa LIBRO.escudo; o pon otra ruta solo para esta página
+        insignia: 'escudo-portada.png'   // ← imagen de la portada
       },
       dorso: { tipo: 'guarda' }
     },
@@ -57,6 +58,7 @@ const LIBRO = {
         caso: 'A.C. Peterson · CASO Nº: RC-09-29-98',
         agencia: 'Departamento de Policía de Raccoon City',
         unidad: 'Unidad especial de investigación',
+        insignia: 'emblema-registro.png',   // ← imagen de la página del registro
         titulo: 'Registro de archivo',
         campos: [
           ['Tipo de documento', 'Informe de incidente mayor'],
@@ -120,7 +122,7 @@ const LIBRO = {
           'Me resulta muy difícil ponerme a escribir estas líneas; no obstante, considero que es mi responsabilidad informar de todo lo acontecido. Sustituye este párrafo por tu propio texto.',
           'Aquí tienes ==una frase con marcador negro== y también __una palabra subrayada__ como en los archivos originales.',
           { espacio: 1 },
-          { img: 'img/foto1.jpg', filas: 9, ancho: '72%', pie: 'Fig. 1 — Pie de foto editable' }
+          { img: 'foto1.jpg', filas: 9, ancho: '72%', pie: 'Fig. 1 — Pie de foto editable' }
         ]
       },
       dorso: {
@@ -137,7 +139,7 @@ const LIBRO = {
     /* ── Hoja final: guarda trasera + contraportada ──────────────── */
     {
       frente: { tipo: 'guarda' },
-      dorso: { tipo: 'contraportada', texto: 'Raccoon City · 1969' }
+      dorso: { tipo: 'contraportada', texto: 'Raccoon City · 1969', insignia: 'escudo-portada.png' }
     }
   ]
 };
