@@ -111,34 +111,29 @@ body{
 .r-tit{font-weight:700;text-transform:uppercase;margin-bottom:1.5em;letter-spacing:.01em}
 .r-reg b{font-weight:800}
 
-/* manchas */
-.mancha-gr{position:absolute;right:-9%;top:-5%;width:58%;aspect-ratio:1.1;border-radius:46% 54% 42% 58%;
-  background:radial-gradient(ellipse at 55% 52%,rgba(125,45,55,.8) 0,rgba(135,55,60,.55) 46%,transparent 72%);filter:blur(.08em)}
-.gota{position:absolute;border-radius:50%;background:#8c1f2f;width:var(--d);aspect-ratio:1;left:var(--x);top:var(--y);opacity:.92}
-.gota.el{aspect-ratio:3.2;border-radius:50%;transform:rotate(var(--r,0deg))}
-.aro{position:absolute;width:var(--s);aspect-ratio:1;border-radius:50%;left:var(--x);top:var(--y);
-  border:.2em solid rgba(112,46,52,.42);box-shadow:inset 0 0 .7em rgba(112,46,52,.28)}
-.aro.mancha{background:radial-gradient(circle,rgba(112,46,52,.55),rgba(112,46,52,.32) 70%,transparent 72%);border:0;box-shadow:none}
-
 /* ---------- PAPEL RAYADO (documentos) ---------- */
 .f-paper{
-  --lh:1.85em;
+  --lh:calc(var(--pw)*.0245*1.85);     /* distancia entre líneas, igual para toda la página */
+  --dy:calc(var(--pw)*.0245*.31);      /* sube las líneas respecto al texto: más = el texto queda más abajo */
   background:
-    repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--lh) - 1px),var(--rule) calc(var(--lh) - 1px),var(--rule) var(--lh)),
+    linear-gradient(to bottom,transparent calc(var(--lh) - 1px),var(--rule) calc(var(--lh) - 1px)),
     var(--noise),
     radial-gradient(ellipse at 50% 45%,#f3f4f0,#e4e7e2 90%),var(--paper);
+  background-size:100% var(--lh),auto,auto;
+  background-repeat:repeat-y,repeat,no-repeat;
+  background-position:0 calc(var(--dy)*-1),0 0,0 0;
   color:#3b3833;
   font-family:'Courier Prime','Courier New',monospace;
 }
 .f-paper.front{--pl:12%;--pr:8.5%}
 .f-paper.back{--pl:8.5%;--pr:12%}
-.hdr{position:absolute;top:calc(var(--lh)*.8);right:var(--pr);text-align:right;font-weight:700;font-size:.76em;line-height:1.55;letter-spacing:.03em;text-transform:uppercase;color:#2f2d2a}
+.hdr{position:absolute;top:var(--lh);right:var(--pr);text-align:right;white-space:nowrap;font-weight:700;font-size:.76em;line-height:var(--lh);letter-spacing:.03em;text-transform:uppercase;color:#2f2d2a}
 .cuerpo{position:absolute;left:var(--pl);right:var(--pr);top:calc(var(--lh)*2);height:calc(var(--lh)*26);overflow:hidden;
   line-height:var(--lh);text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-size:.98em}
 .cuerpo p{margin:0;text-indent:2.4em}
-.cuerpo .sub{margin:0;font:400 1.25em/1.48 'Special Elite','Courier Prime',monospace;color:var(--stamp);text-indent:0;height:var(--lh)}
+.cuerpo .sub{margin:0;font:400 1.25em/var(--lh) 'Special Elite','Courier Prime',monospace;color:var(--stamp);text-indent:0;height:var(--lh)}
 .cuerpo .gap{height:calc(var(--lh)*var(--rows,1))}
-.pie{position:absolute;left:var(--pl);right:var(--pr);bottom:calc(var(--lh)*.7);display:flex;justify-content:space-between;font-weight:700;font-size:.82em;color:#2f2d2a}
+.pie{position:absolute;left:var(--pl);right:var(--pr);top:calc(var(--lh)*29);line-height:var(--lh);display:flex;justify-content:space-between;font-weight:700;font-size:.82em;color:#2f2d2a}
 
 /* marcas de texto */
 mark{padding:.05em .18em;margin:0 -.05em}
@@ -162,11 +157,13 @@ u{text-decoration:underline;text-decoration-style:dashed;text-underline-offset:.
 .foto figcaption{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:.82em;line-height:var(--lh);font-style:italic;color:#4a4740}
 
 /* ---------- páginas de título de documento ---------- */
-.t-mid{position:absolute;left:var(--pl);right:var(--pr);top:calc(var(--lh)*8.8);text-align:center}
-.t-doc{display:inline-block;font-size:1.55em;border-bottom:.08em dashed #2a2a2a;padding:0 .3em .05em;letter-spacing:.02em;color:#2a2a2a}
-.t-title{margin:.45em 0 0;font:400 3.55em/1.02 'Special Elite','Courier Prime',monospace;color:var(--stamp);letter-spacing:.01em}
-.t-meta{position:absolute;left:8%;right:8%;bottom:calc(var(--lh)*2.2);font-family:'Special Elite','Courier Prime',monospace;font-size:.86em;line-height:1.6;text-transform:uppercase;color:#34322e;letter-spacing:.02em}
-.t-meta .g{margin-bottom:1.1em}
+.t-mid{position:absolute;left:var(--pl);right:var(--pr);top:calc(var(--lh)*8);text-align:center}
+.t-doc{display:block;margin:0 0 var(--lh);font-size:1.55em;line-height:var(--lh);letter-spacing:.02em;color:#2a2a2a;
+  text-decoration:underline dashed;text-decoration-thickness:.06em;text-underline-offset:.22em}
+.t-title{margin:0;font-family:'Special Elite','Courier Prime',monospace;font-weight:400;font-size:3.55em;line-height:calc(var(--lh)*2);color:var(--stamp);letter-spacing:.01em}
+.t-meta{position:absolute;left:8%;right:8%;top:calc(var(--lh)*17);font-family:'Special Elite','Courier Prime',monospace;font-size:.86em;
+  line-height:var(--lh);white-space:nowrap;text-transform:uppercase;color:#34322e;letter-spacing:.02em}
+.t-meta .g{margin-bottom:var(--lh)}
 .f-paper.back .t-meta{left:12%}
 
 /* ---------- sello ---------- */
