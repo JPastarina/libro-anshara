@@ -52,9 +52,10 @@ body{
   border-radius:0 .15em .15em 0;
 }
 .face.back{transform:rotateY(180deg);border-radius:.15em 0 0 .15em}
-/* tapas duras: esquinas rectas y un poco más grandes que las páginas, para que no asome nada por detrás */
-.leaf.hard .face.front{border-radius:0;inset:-.4em -.4em -.4em 0}
-.leaf.hard .face.back{border-radius:0;inset:-.4em 0 -.4em -.4em}
+/* tapas duras: un poco más grandes que las páginas (igual por ambos lados) y en el color de la tapa.
+   Se define en coordenadas de la hoja: las dos caras sobresalen por arriba, abajo y el lado exterior */
+.leaf.hard .face.front,.leaf.hard .face.back{border-radius:0;inset:-.4em -.4em -.4em -.2em}
+.leaf.hard .face.f-kraft{border:solid var(--cover);border-width:.4em .4em .4em .2em}
 
 /* sombra del lomo y sombreado durante el giro */
 .face::before{content:"";position:absolute;top:0;bottom:0;width:13%;pointer-events:none;z-index:5}
@@ -205,8 +206,8 @@ u{text-decoration:underline;text-decoration-style:dashed;text-underline-offset:.
 .corner:hover .fold,.corner:focus-visible .fold{width:6em;height:6em}
 .corner:focus-visible{outline:2px solid #f3dfa0;outline-offset:-4px}
 .fold i,.fold b{position:absolute;inset:0}
-.fold i{background:linear-gradient(to bottom right,#8f7d67,#c6b59d 60%);clip-path:polygon(100% 0,100% 100%,0 100%)}
-.fold b{background:linear-gradient(135deg,#fdf8ec 0%,#e3d5bb 70%,#cdbd9f 100%);clip-path:polygon(0 0,100% 0,0 100%)}
+.fold i{background:linear-gradient(to bottom right,var(--us,#8f7d67),var(--ub,#c6b59d) 60%);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.fold b{background:var(--rl,linear-gradient(transparent,transparent)),linear-gradient(135deg,var(--fa,#fdf8ec) 0%,var(--fb,#cdbd9f) 100%);background-size:auto 1.1em,auto;clip-path:polygon(0 0,100% 0,0 100%)}
 
 #hint{
   position:fixed;left:0;right:0;bottom:.8rem;margin:0;text-align:center;
