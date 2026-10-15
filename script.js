@@ -40,12 +40,12 @@ const LIBRO = {
     {
       frente: {
         tipo: 'portada',
-        agencia: 'Departamento de Policía de Raccoon City',
+        agencia: 'Jikogisei Kaizokudan',
         unidad: 'Unidad especial de investigación',
-        titulo: 'Informe del incidente',
-        subtitulo: 'Raccoon City - Septiembre de 1998',
-        placa: 'A.C. Peterson · CASO Nº: RC-09-29-98',
-        pie: 'Propiedad del Departamento de Policía de Raccoon City',
+        titulo: 'Informe del operativo',
+        subtitulo: 'Grand Line - 1542',
+        placa: 'Anshara · CASO Nº: AZ-25',
+        pie: 'Propiedad de Jikogisei Kaizokudan',
         insignia: 'escudo-portada.png'   // ← imagen de la portada
       },
       dorso: { tipo: 'guarda' }
@@ -55,31 +55,31 @@ const LIBRO = {
     {
       frente: {
         tipo: 'registro',
-        caso: 'A.C. Peterson · CASO Nº: RC-09-29-98',
-        agencia: 'Departamento de Policía de Raccoon City',
+        caso: 'Anshara · CASO Nº: AZ-25',
+        agencia: 'Jikogisei Kaizokudan',
         unidad: 'Unidad especial de investigación',
         insignia: 'emblema-registro.png',   // ← imagen de la página del registro
         titulo: 'Registro de archivo',
         campos: [
-          ['Tipo de documento', 'Informe de incidente mayor'],
-          ['Ubicación', 'Raccoon City, condado de Arklay'],
-          ['Fecha del incidente', 'Septiembre de 1998'],
+          ['Tipo de documento', 'Informe biográfico'],
+          ['Ubicación', 'Grand Line'],
+          ['Fecha del incidente', '1520 a 1542'],
           ['Elaborado por', 'Unidad de Investigaciones Especiales'],
-          ['Recuperado por', 'A. C. Peterson (periodista)'],
-          ['Estado', 'CERRADO']
+          ['Recuperado por', 'Z. Anshara'],
+          ['Estado', 'ABIERTO']
         ],
         sello: 'CLASSIFIED'
       },
       dorso: {
         tipo: 'titulo',
-        archivo: 'ARKLAY FEDERAL ARCHIVE',
-        cabecera: ['ARKLAY FEDERAL ARCHIVE', 'CASE FILE RC-09-29-98', 'DOCUMENT 00'],
+        archivo: 'JIKOGISEI ARCHIVE',
+        cabecera: ['JIKOGISEI ARCHIVE', 'CASE FILE AZ-25', 'DOCUMENT 00'],
         docNum: '00',
-        titulo: 'Preámbulo',
+        titulo: 'Niñez',
         meta: [
-          ['ARCHIVO DE INVESTIGACIÓN', 'CASO: RC-09-29-98'],
-          ['DOCUMENTO Nº: 00', 'AGENTE: R. MÉNDEZ', 'SUPERVISIÓN: UNIDAD ESPECIAL DE INVESTIGACIÓN', 'CUSTODIA: ARCHIVO FEDERAL, ARKLAY'],
-          ['ESTADO: ~~CLASIFICADO~~', 'FECHA DEL REGISTRO: 28 NOV 2002', 'REFERENCIA CRUZADA: ARCHIVO RC-00 / PREÁMBULO']
+          ['ARCHIVO DE INVESTIGACIÓN', 'CASO: AZ-25'],
+          ['DOCUMENTO Nº: 00', 'AGENTE: NOIR', 'SUPERVISIÓN: UNIDAD ESPECIAL DE INVESTIGACIÓN', 'CUSTODIA: ARCHIVO CLASIFICADO, KAGEBOSHI'],
+          ['ESTADO: ~~CLASIFICADO~~', 'FECHA DEL REGISTRO: 1526', 'REFERENCIA CRUZADA: ARCHIVO AZ-00 / NIÑEZ']
         ],
         sello: 'CLASSIFIED'
       }
