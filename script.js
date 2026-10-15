@@ -32,7 +32,7 @@
 
 const LIBRO = {
   caso: 'RC-09-29-98',
-  escudo: 'img/escudo.png',   // ← imagen del escudo (portada, registro y contraportada)
+  escudo: 'escudo.png',       // ← ruta de la imagen del escudo (portada, registro y contraportada)
 
   hojas: [
     /* ── Hoja 1: portada + interior de la tapa ───────────────────── */
@@ -171,7 +171,12 @@ const LIBRO = {
     .replace(/##(.+?)##/g, (_, t) => '<span class="tachado">' + garble(t) + '</span>');
 
   /* ---------- escudo (imagen editable) ---------- */
-  const emblema = src => `<img class="insignia" src="${esc(src || LIBRO.escudo)}" alt="Escudo R.P.D." onerror="this.classList.add('vacio')">`;
+  const emblema = src => {
+    const ruta = src || LIBRO.escudo;
+    // si no la encuentra, prueba también dentro de la carpeta img/ (o fuera de ella)
+    const alt = ruta.startsWith('img/') ? ruta.slice(4) : 'img/' + ruta;
+    return `<img class="insignia" src="${esc(ruta)}" alt="Escudo R.P.D." onerror="if(!this.dataset.r){this.dataset.r=1;this.src='${esc(alt)}'}else{this.classList.add('vacio')}">`;
+  };
 
   /* ---------- sello ---------- */
   const sello = txt => txt === false ? '' : `<div class="sello">${esc(txt || 'CLASSIFIED')}</div>`;
