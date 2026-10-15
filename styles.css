@@ -83,8 +83,8 @@ body{
 .c-agency{font-weight:700;font-size:1.42em;letter-spacing:.005em;line-height:1.15;text-transform:uppercase}
 .c-line{height:.2em;background:var(--foil);margin:.55em 0 1.3em;border-radius:.1em}
 .c-unit{font-size:.95em;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
-.insignia{width:64%;height:auto;margin:3% 0;filter:drop-shadow(0 .06em .06em rgba(0,0,0,.35))}
-.insignia-img{width:64%;height:auto;margin:3% 0}
+.insignia{width:56%;height:auto;margin:3% 0;filter:drop-shadow(0 .2em .35em rgba(0,0,0,.45))}
+.insignia.vacio{aspect-ratio:.93;outline:.15em dashed rgba(255,255,255,.45);font-size:.8em}
 .c-mid{width:100%;display:flex;flex-direction:column;align-items:center}
 .c-title{font-weight:800;font-size:2.05em;line-height:1.1;text-transform:uppercase;letter-spacing:.01em}
 .c-sub{margin-top:1.1em;font-size:1.05em;letter-spacing:.035em;text-transform:uppercase}
@@ -95,7 +95,7 @@ body{
 }
 .c-foot{font-size:.82em;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-top:1.3em}
 .f-cover.trasera{justify-content:center;gap:2em}
-.f-cover.trasera .insignia{width:42%;opacity:.9}
+.f-cover.trasera .insignia{width:42%}
 
 /* ---------- PAPEL KRAFT (guardas y registro) ---------- */
 .f-kraft{
@@ -106,7 +106,7 @@ body{
 .r-agencia{position:absolute;top:15%;left:11%;right:7%;margin:0;font-size:1.46em;font-weight:800;text-transform:uppercase;line-height:1.1;color:#1d2635}
 .r-linea{position:absolute;top:19.6%;left:11%;right:7%;height:.2em;background:#1d2635}
 .r-unidad{position:absolute;top:22.6%;left:11%;right:7%;font-size:.95em;letter-spacing:.3em;text-transform:uppercase;text-align:center}
-.f-kraft .insignia{position:absolute;left:21%;top:31%;width:56%;color:#1d2635;filter:none}
+.f-kraft .insignia{position:absolute;left:25%;top:29.5%;width:50%;margin:0}
 .r-reg{position:absolute;left:11%;right:5%;bottom:10%;font-size:1em;line-height:1.5}
 .r-tit{font-weight:700;text-transform:uppercase;margin-bottom:1.5em;letter-spacing:.01em}
 .r-reg b{font-weight:800}
