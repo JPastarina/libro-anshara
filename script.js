@@ -271,7 +271,34 @@ const LIBRO = {
   const canNext = () => f < N;
   const canPrev = () => f > 0;
 
+  /* ---------- color de la esquina según la página que se ve al doblarla ---------- */
+  const REGLAS = 'repeating-linear-gradient(to bottom,transparent 0,transparent calc(1.1em - 1px),rgba(88,108,128,.38) calc(1.1em - 1px),rgba(88,108,128,.38) 1.1em)';
+  const TONOS = {
+    papel: { fa: '#fbfcf8', fb: '#d3d6cd', us: '#a3a69e', ub: '#e5e7e1', rl: REGLAS },
+    kraft: { fa: '#e8d3c6', fb: '#bd9d8f', us: '#98796c', ub: '#d2b7a8' },
+    tapa:  { fa: '#a24747', fb: '#6b2525', us: '#451616', ub: '#7D2C2C' }
+  };
+  const tono = d => {
+    if (!d) return TONOS.tapa;
+    if (d.tipo === 'portada' || d.tipo === 'contraportada') return TONOS.tapa;
+    if (d.tipo === 'guarda' || d.tipo === 'registro' || (d.tipo === 'html' && d.papel === 'kraft')) return TONOS.kraft;
+    return TONOS.papel;
+  };
+  const pintar = (btn, flap, debajo) => {
+    const st = btn.style;
+    st.setProperty('--fa', flap.fa); st.setProperty('--fb', flap.fb);
+    st.setProperty('--rl', flap.rl || 'linear-gradient(transparent,transparent)');
+    st.setProperty('--us', debajo.us); st.setProperty('--ub', debajo.ub);
+  };
+  function colorEsquinas() {
+    // siguiente: el doblez enseña el dorso de la hoja que se pasa; debajo queda el frente de la siguiente
+    if (H[f]) pintar(btnN, tono(H[f].dorso), tono(H[f + 1] && H[f + 1].frente));
+    // anterior: el doblez enseña el frente de la hoja que vuelve; debajo queda el dorso de la anterior
+    if (H[f - 1]) pintar(btnP, tono(H[f - 1].frente), tono(H[f - 2] && H[f - 2].dorso));
+  }
+
   function render() {
+    colorEsquinas();
     const v = view();
     wrap.style.setProperty('--shift', (v === 'r' ? -pw / 2 : v === 'l' ? pw / 2 : 0) + 'px');
     corners.style.setProperty('--vw', (v === 'both' ? pw * 2 : pw) + 'px');
