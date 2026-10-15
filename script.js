@@ -91,10 +91,12 @@ const LIBRO = {
         tipo: 'texto',
         cabecera: 'DOCUMENT 00',
         contenido: [
-          'El sujeto !!Ziusudra Anshara!!, hija de ##Ziusudra ZJSHS## y #Ziusudra ASDHJ## presenta un estado psicofísico óptimo durante su infancia y niñez.',
+          'El sujeto !!Ziusudra Anshara!!, hija de ##Ziusudra ZJSHS## y ##Ziusudra ASDHJ## presenta un estado psicofísico óptimo durante su infancia y niñez.',
           'El agente instructor Noir ha obtenido la custodia de Anshara en el año 1528 del Kaienreki, cuando el sujeto tenía 3 años.',
-          'Z. Anshara demuestra capacidades sociales altas gracias a Noir. A sus 8 años logró crear un nuevo sistema de apuestas de comida entre sus compañeros del colegio, y no fue descubierta hasta los 10 años por el propio colegio.',
+          'Z. Anshara demuestra capacidades sociales altas gracias a Noir. A sus 8 años logró crear un nuevo sistema de apuestas de comida entre sus compañeros del colegio, y no fue descubierta hasta los 10 años por el propio colegio. Noir indica que era consciente de esto, añadiendo que parecía llegar a casa con más dinero que con el que se iba.',
           'Hace tratos con varios de sus compañeros, tanto con juguetes como con comida. Vuelve a vender aquello que ha comprado o cambiado por algo de mayor valor, tiene potencial como comerciante.',
+          'Cuando tenía 12 años era infame por su gusto por el dinero, los niños que querían conseguir algo siempre se dirigían hacia ella aún cuando eran mayores. Sabe hacer contactos',
+          'Tiene amistad con un sujeto masculino llamado Enki y otro sujeto fememino llamado Ishtar. Se hizo la verificación de antecedentes correspondiente, tanto ellos como sus familias son normales. No existe peligro para Z. Anshara',
           { espacio: 1 },
           { titulo: '[SECCIÓN ELIMINADA]' },
           '##texto totalmente censurado por la autoridad competente##'
