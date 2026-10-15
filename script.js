@@ -32,6 +32,7 @@
 
 const LIBRO = {
   caso: 'RC-09-29-98',
+  escudo: 'img/escudo.png',   // ← imagen del escudo (portada, registro y contraportada)
 
   hojas: [
     /* ── Hoja 1: portada + interior de la tapa ───────────────────── */
@@ -44,7 +45,7 @@ const LIBRO = {
         subtitulo: 'Raccoon City - Septiembre de 1998',
         placa: 'A.C. Peterson · CASO Nº: RC-09-29-98',
         pie: 'Propiedad del Departamento de Policía de Raccoon City',
-        insignia: null            // o "img/escudo.png" para usar tu propia imagen
+        insignia: null            // null = usa LIBRO.escudo; o pon otra ruta solo para esta página
       },
       dorso: { tipo: 'guarda', manchas: 'sangre' }
     },
@@ -170,29 +171,8 @@ const LIBRO = {
     .replace(/__(.+?)__/g, '<u>$1</u>')
     .replace(/##(.+?)##/g, (_, t) => '<span class="tachado">' + garble(t) + '</span>');
 
-  /* ---------- insignia vectorial (escudo R.P.D.) ---------- */
-  const insignia = fill => {
-    const id = 'i' + (++uid);
-    return `<svg class="insignia" viewBox="0 0 300 330" fill="${fill}" stroke="${fill}" aria-hidden="true">
-      <defs>
-        <path id="${id}t" d="M82 188 A68 68 0 0 1 218 188"/>
-        <path id="${id}b" d="M62 188 A88 88 0 0 0 238 188"/>
-      </defs>
-      <path d="M70 40 Q150 20 230 40 L236 92 Q150 72 64 92 Z" fill="none" stroke-width="4"/>
-      <text x="150" y="70" text-anchor="middle" stroke="none" font-family="Bitter,serif" font-weight="800" font-size="38" letter-spacing="4">R.P.D.</text>
-      <path d="M36 118 C28 228 92 282 150 322 C208 282 272 228 264 118" fill="none" stroke-width="4"/>
-      <path d="M44 150 C12 140 12 98 44 96 C30 106 34 124 52 126" fill="none" stroke-width="5"/>
-      <path d="M256 150 C288 140 288 98 256 96 C270 106 266 124 248 126" fill="none" stroke-width="5"/>
-      <circle cx="150" cy="188" r="98" fill="none" stroke-width="3"/>
-      <circle cx="150" cy="188" r="91" fill="none" stroke-width="1.5"/>
-      <circle cx="150" cy="188" r="62" fill="none" stroke-width="3"/>
-      <circle cx="150" cy="188" r="55" fill="none" stroke-width="5" stroke-dasharray="3 3"/>
-      <text stroke="none" font-family="Bitter,serif" font-weight="800" font-size="29"><textPath href="#${id}t" startOffset="50%" text-anchor="middle">POLICÍA</textPath></text>
-      <text stroke="none" font-family="Bitter,serif" font-weight="800" font-size="25" letter-spacing="1"><textPath href="#${id}b" startOffset="50%" text-anchor="middle">RACCOON CITY</textPath></text>
-      <polygon stroke="none" points="150,156 157.6,177.5 180.4,178.1 162.4,192 168.8,213.9 150,201 131.2,213.9 137.6,192 119.6,178.1 142.4,177.5"/>
-      <text x="150" y="309" text-anchor="middle" stroke="none" font-family="Bitter,serif" font-weight="800" font-size="22">1969</text>
-    </svg>`;
-  };
+  /* ---------- escudo (imagen editable) ---------- */
+  const emblema = src => `<img class="insignia" src="${esc(src || LIBRO.escudo)}" alt="Escudo R.P.D." onerror="this.classList.add('vacio')">`;
 
   /* ---------- manchas de sangre / café ---------- */
   const g = (x, y, d, extra = '') => `<span class="gota ${extra}" style="--x:${x}%;--y:${y}%;--d:${d}%"></span>`;
@@ -240,7 +220,7 @@ const LIBRO = {
         <div class="c-line"></div>
         <div class="c-unit">${marcas(p.unidad)}</div>
       </div>
-      ${p.insignia ? `<img class="insignia-img" src="${esc(p.insignia)}" alt="">` : insignia('url(#foil)')}
+      ${emblema(p.insignia)}
       <div class="c-mid">
         <div class="c-title foil">${marcas(p.titulo)}</div>
         <div class="c-sub">${marcas(p.subtitulo)}</div>
@@ -248,7 +228,7 @@ const LIBRO = {
       </div>
       <div class="c-foot">${marcas(p.pie)}</div>`],
 
-    contraportada: p => ['f-cover trasera', `${insignia('url(#foil)')}<div class="c-sub foil" style="margin:0">${marcas(p.texto || '')}</div>`],
+    contraportada: p => ['f-cover trasera', `${emblema(p.insignia)}<div class="c-sub foil" style="margin:0">${marcas(p.texto || '')}</div>`],
 
     guarda: p => ['f-kraft', manchas(p.manchas)],
 
@@ -257,7 +237,7 @@ const LIBRO = {
       <h2 class="r-agencia">${marcas(p.agencia)}</h2>
       <div class="r-linea"></div>
       <div class="r-unidad">${marcas(p.unidad)}</div>
-      ${insignia('currentColor')}
+      ${emblema(p.insignia)}
       <div class="r-reg">
         <div class="r-tit">${marcas(p.titulo)}</div>
         ${(p.campos || []).map(([k, v]) => `<div><b>${marcas(k)}</b>: ${marcas(v)}</div>`).join('')}
