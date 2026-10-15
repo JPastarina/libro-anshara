@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe del incidente · R.P.D.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bitter:wght@500;700;800&family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Definiciones SVG compartidas: dorado de la portada y textura rugosa del sello -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8a6a30"/>
+        <stop offset=".25" stop-color="#f3dfa0"/>
+        <stop offset=".5" stop-color="#b88c3f"/>
+        <stop offset=".75" stop-color="#f7e8b8"/>
+        <stop offset="1" stop-color="#a07a36"/>
+      </linearGradient>
+      <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="3" result="w"/>
+        <feDisplacementMap in="SourceGraphic" in2="w" scale="3" result="d"/>
+        <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="8" result="g"/>
+        <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.2 1.75" result="m"/>
+        <feComposite in="d" in2="m" operator="in"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <main class="stage" id="stage">
+    <div class="bookwrap" id="bookwrap">
+      <div class="book" id="book"></div>
+    </div>
+
+    <!-- Esquinas para pasar página (se colocan sobre la página visible) -->
+    <div class="corners" id="corners">
+      <button class="corner l" id="prev" aria-label="Página anterior"><span class="fold"><i></i><b></b></span></button>
+      <button class="corner r" id="next" aria-label="Pasar página"><span class="fold"><i></i><b></b></span></button>
+    </div>
+  </main>
+
+  <p id="hint" aria-live="polite"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
