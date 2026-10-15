@@ -85,7 +85,7 @@ body{
 }
 .foil{background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .c-top{width:100%}
-.c-agency{font-weight:700;font-size:1.42em;letter-spacing:.005em;line-height:1.15;text-transform:uppercase}
+.c-agency{font-weight:700;font-size:2.1em;letter-spacing:.06em;line-height:1.15;text-transform:uppercase;text-align:center}
 .c-line{height:.2em;background:var(--foil);margin:.55em 0 1.3em;border-radius:.1em}
 .c-unit{font-size:.95em;letter-spacing:.34em;text-transform:uppercase;font-weight:500}
 .insignia{width:56%;height:auto;margin:3% 0;filter:drop-shadow(0 .2em .35em rgba(0,0,0,.45))}
@@ -108,9 +108,9 @@ body{
   color:#222b3a;font-family:'Bitter',Georgia,serif;
 }
 .r-caso{position:absolute;top:8.5%;left:0;right:0;text-align:center;font-size:.9em;letter-spacing:.04em}
-.r-agencia{position:absolute;top:15%;left:11%;right:7%;margin:0;font-size:1.46em;font-weight:800;text-transform:uppercase;line-height:1.1;color:#1d2635}
-.r-linea{position:absolute;top:19.6%;left:11%;right:7%;height:.2em;background:#1d2635}
-.r-unidad{position:absolute;top:22.6%;left:11%;right:7%;font-size:.95em;letter-spacing:.3em;text-transform:uppercase;text-align:center}
+.r-agencia{position:absolute;top:14.3%;left:9%;right:9%;margin:0;font-size:2.1em;font-weight:800;text-transform:uppercase;line-height:1.1;letter-spacing:.06em;text-align:center;color:#1d2635}
+.r-linea{position:absolute;top:19.6%;left:9%;right:9%;height:.2em;background:#1d2635}
+.r-unidad{position:absolute;top:22.6%;left:9%;right:9%;font-size:.95em;letter-spacing:.3em;text-transform:uppercase;text-align:center}
 .f-kraft .insignia{position:absolute;left:25%;top:29.5%;width:50%;margin:0;filter:none;mix-blend-mode:multiply;opacity:.88}
 .r-reg{position:absolute;left:11%;right:5%;bottom:10%;font-size:1em;line-height:1.5}
 .r-tit{font-weight:700;text-transform:uppercase;margin-bottom:1.5em;letter-spacing:.01em}
